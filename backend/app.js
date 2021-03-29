@@ -51,13 +51,3 @@ app.use(helmet());
 //=====================================
 module.exports = app;
 
-/*
-//connection à mongoDB sauvegarde
-//========================
-mongoose.connect('mongodb+srv://user2p6:mayo456@cluster0.2fzfs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
-
-  */
