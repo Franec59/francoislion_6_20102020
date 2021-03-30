@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken'); //permet de crer des token et de les vérif
 
 const User = require('../models/User');
 
+//pour utiliser des variables d'environnement pour la connexion à mongoDB
+require('dotenv').config()
+
 //fonction signup pour l'enregistrement de nouveau utilisateur
 //fonction asynchrone ( then & catch), saler le MP, 
 exports.signup = (req, res, next) => {
@@ -39,7 +42,7 @@ exports.login = (req, res, next) => {
               userId: user._id,
               token: jwt.sign(
                 { userId: user._id },
-                'RANDOM_TOKEN_SECRET', //chaine de caractère aléatoire et plus long pour sécuriser l'encodage
+                process.env.TOKEN, //chaine de caractère aléatoire et plus long pour sécuriser l'encodage
                 { expiresIn: '24h' } //expiration du token
               )
             });

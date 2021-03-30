@@ -9,6 +9,13 @@ const userRoutes = require('./routes/user');
 
 const path = require('path');
 
+const mongoSanitize = require('express-mongo-sanitize');
+
+//Ddos
+//===========================================
+var Ddos = require('ddos')
+var ddos = new Ddos({burst:10, limit:15})
+    
 //pour utiliser des variables d'environnement pour la connexion à mongoDB
 require('dotenv').config()
 
@@ -22,6 +29,7 @@ mongoose.connect(process.env.MONGODB,
 
 const app = express();
 
+
 //1er middleware : CORS
 //========================
 app.use((req, res, next) => {
@@ -31,9 +39,10 @@ app.use((req, res, next) => {
     next();
   });
 
-//2ème middleware à créer
+//2ème middleware bodyparser
 //=============================
-app.use(bodyParser.json());
+//app.use(bodyParser.json());//deprecated
+app.use (express.json ());//remplace bodyParser
 
 // middleware avec le router
 //===================================
@@ -46,6 +55,12 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 //=======================
 app.use(helmet());
 
+//middleware mongosanitize
+//===============================
+app.use(mongoSanitize());
+
+//middleware Ddos
+app.use(ddos.express);
 
 //fin de la page app
 //=====================================

@@ -27,8 +27,3 @@ router.post('/:id/like', auth, saucesCtrl.likePost);
 
 //il faut réexporter le router de ce fichier
 module.exports = router;
-
-
-
-//Sauce = nom du model
-//sauces = collections => le tableau de toutes les sauces
