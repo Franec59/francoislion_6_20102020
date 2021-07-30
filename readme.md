@@ -1,6 +1,6 @@
-================================================================================================
+
 Projet6 : SoPekocko : Construisez une API sécurisée pour une application d'avis gastronomiques
-================================================================================================
+
 
 Projet réalisé dans le cadre du parcours "developpeur" web d'openclassroom.
 
